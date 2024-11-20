@@ -9,6 +9,13 @@ const { setLogLevel } = require('@azure/logger');
 
 setLogLevel('info');
 
+/**
+ * Parses a string template and replaces placeholders with corresponding values from a given object.
+ *
+ * @param {string} expression - The string template containing placeholders in the format {{key}}.
+ * @param {Object} valueObj - An object containing key-value pairs where keys correspond to placeholders in the template.
+ * @returns {string} - The resulting string with placeholders replaced by corresponding values from the valueObj.
+ */
 function stringTemplateParser(expression, valueObj) {
   const templateMatcher = /{{\s?([^{}\s]*)\s?}}/g;
   let text = expression.replace(templateMatcher, (substring, value, index) => {
